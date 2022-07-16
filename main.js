@@ -13,7 +13,8 @@ const app = Vue.createApp({
             ],
             cart: 0,
             SelectedVariant: 0,
-            onSale: true
+            onSale: true,
+            premium: true
 
         }
     },
@@ -26,9 +27,11 @@ const app = Vue.createApp({
         },
         updateVariant(index) {
             this.SelectedVariant = index;
-        }
+        },
+
     },
     computed: {
+
         title() {
             return this.brand + ' ' + this.product
         },
@@ -41,7 +44,14 @@ const app = Vue.createApp({
         },
         onSaleja() {
             return this.brand + ' is on sale ' + this.product
+        },
+        shipping() {
+            if (this.premium) {
+                return 'Free'
+            }
+            return 30
         }
+
 
     }
 
