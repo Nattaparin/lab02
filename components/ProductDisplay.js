@@ -72,10 +72,15 @@ app.component('product-display', {
        inStock() {
            return this.variants[this.SelectedVariant].quantity
        },
-       onsalee() {
+       onSaleja() {
            return this.brand + ' is on sale ' + this.product
-       }
-
+       },
+       shipping() {
+        if (this.premium) {
+            return 'Free'
+        }
+        return 30
+    }
 
    }
 
