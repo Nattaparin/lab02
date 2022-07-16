@@ -15,4 +15,4 @@ app.component("product-details", {
                 <li>{{ detail }}</li>
             </ul>
             `,
-}); 
+});
