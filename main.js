@@ -2,17 +2,19 @@ const app = Vue.createApp({
     data() {
         return {
             product: 'Shoes',
-            brand: 'SE 331',
-
+            brand: 'SE331',
+            // image: './assets/images/socks_green.jpg',
+            // inStock: true,
             inventory: 100,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
-                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
+                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
                 { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 }
             ],
             cart: 0,
-            selectedVariant:0,
+            SelectedVariant: 0,
             onSale: true
+
         }
     },
     methods: {
@@ -32,10 +34,10 @@ const app = Vue.createApp({
         },
 
         image() {
-            return this.variants[this.selectedVariant].image
+            return this.variants[this.SelectedVariant].image
         },
         inStock() {
-            return this.variants[this.selectedVariant].quantity
+            return this.variants[this.SelectedVariant].quantity
         },
         onSaleja() {
             return this.brand + ' is on sale ' + this.product
