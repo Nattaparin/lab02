@@ -14,6 +14,8 @@ app.component ('product-display',{
             </div>
             <div class="product-info">
                 <h1>{{ title }} </h1>
+                <p v-if="onSale == true ">{{ onSaleja}}</p>
+
                 <p v-if="inStock"> In Stock</p>
                 <p v-else> Out of Stock</p>
                 <p>Shipping: {{shipping}}</p>
@@ -25,18 +27,9 @@ app.component ('product-display',{
                     class="color-circle"
                     :style=" { backgroundColor: variant.color }">
                 </div>
-                <button
-                class="button"
-                :class="{disabledButton: !inStock}"
-                :disabled='!inStock'
-                v-on:click="addToCart">
-                Add to Cart
+                <button class="button":class="{disabledButton: !inStock}":disabled='!inStock'v-on:click="addToCart">Add to Cart
                 </button>
-                <button
-                class="button"
-                v-on:click="removeFromCart">
-                Remove
-                </button>
+                <button class="button"v-on:click="removeFromCart">Remove</button>
             </div>
         </div>
         <review-list v-if="reviews.length" :reviews="reviews"></review-list>
@@ -61,7 +54,8 @@ app.component ('product-display',{
             ],
             activeClass: true,
             selectedVariant:0,
-            reviews:[]
+            reviews:[],
+            onSale: true
 
         }
     },
@@ -91,6 +85,9 @@ app.component ('product-display',{
         },
         inStock() {
             return this.variants[this.selectedVariant].quantity
+        },
+        onSaleja() {
+            return this.brand + 'is on sale' + this.product
         },
         shipping() {
             if (this.premium) {
